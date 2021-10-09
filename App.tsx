@@ -13,7 +13,6 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 import MainNavigation from './src/navigation/MainNavigation';
-import SplashScreen from './src/pages/SplashScreen';
 import appReducer from './src/store/reducers/main-reducer';
 
 const App = () => {
@@ -27,7 +26,8 @@ const App = () => {
 
   return (
     <Provider store={rootStore}>
-      <SplashScreen />
+      
+      <MainNavigation />
     </Provider>
   );
 }
