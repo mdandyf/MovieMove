@@ -21,19 +21,22 @@ const initialState = {
 
 const actionInitialState = {
     type: "",
-    data: []
+    dataTopRated: new TopRatedMovies(),
+    dataPopular: new PopularMovies(),
+    dataNowPlaying: new NowPlayingMovies(),
+    dataUpcoming: new UpComingMovies()
 }
 
 const movieReducer = (state = initialState, action=actionInitialState) => {
     switch (action.type) {
         case GET_TOP_RATED_MOVIES:
-            return {...state, isLoading: false, topPickMovies: action.data}
+            return {...state, isLoading: false, topPickMovies: action.dataTopRated.results}
         case GET_POPULAR_MOVIES:
-            return {...state, isLoading: false, popularMovies: action.data}
+            return {...state, isLoading: false, popularMovies: action.dataPopular.results}
         case GET_NOW_PLAYING_MOVIES:
-            return {...state, isLoading: false, nowPlayingMovies: action.data}
+            return {...state, isLoading: false, nowPlayingMovies: action.dataNowPlaying.results}
         case GET_UPCOMING_MOVIES:
-            return {...state, isLoading: false, upcomingMovies: action.data}
+            return {...state, isLoading: false, upcomingMovies: action.dataUpcoming.results}
         default:
             return state;
     }
