@@ -1,34 +1,23 @@
-import OnTheAirTVShowsModel from '../../models/OnTheAirTvShowsModel';
-import PopularTVShowsModel from '../../models/PopularTVShowsModel';
-import TopRatedTVShowsModel from '../../models/TopRatedTVShowsModel';
-import {
-    GET_TOP_RATED_TV_SHOWS,
-    GET_POPULAR_TV_SHOWS,
-    GET_ON_THE_AIR_TV_SHOWS,
-} from '../actions/tvshows';
+import { Action } from '../actions/index';
+import { ActionType } from '../actiontype/index';
 
 const initialState = {
-    isLoading: true,
-    topRatedTvShows: [],
-    popularTvShows: [],
-    otaTvShows: []
+    isLoadingTopRatedTvShows: true,
+    topRatedTvShows:{},
+    isLoadingPopularTvShows: true,
+    popularTvShows:{},
+    isLoadingOtaTvShows: true,
+    otaTvShows:{}
 }
 
-const actionInitialState = {
-    type: "",
-    dataTopRated: new TopRatedTVShowsModel(),
-    dataPopular: new PopularTVShowsModel(),
-    dataOta: new OnTheAirTVShowsModel(),
-}
-
-const tvshowReducer = (state = initialState, action=actionInitialState) => {
+const tvshowReducer = (state: any = initialState, action: Action) => {
     switch (action.type) {
-        case GET_TOP_RATED_TV_SHOWS:
-            return {...state, isLoading: false, topRatedTvShows: action.dataTopRated.results}
-        case GET_POPULAR_TV_SHOWS:
-            return {...state, isLoading: false, popularTvShows: action.dataPopular.results}
-        case GET_ON_THE_AIR_TV_SHOWS:
-            return {...state, isLoading: false, otaTvShows: action.dataOta.results}
+        case ActionType.GET_TOP_RATED_TVSHOWS:
+            return {...state, isLoadingTopRatedTvShows: false, topRatedTvShows: action.payload}
+        case ActionType.GET_POPULAR_TVSHOWS:
+            return {...state, isLoadingPopularTvShows: false, popularTvShows: action.payload}
+        case ActionType.GET_ON_THE_AIR_TV_SHOWS:
+            return {...state, isLoadingOtaTvShows: false, otaTvShows: action.payload}
         default:
             return state;
     }

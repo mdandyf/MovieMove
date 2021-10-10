@@ -1,4 +1,4 @@
-class NowPlayingMoviesResults {
+class MovieDetailModel {
     adult: boolean
     backdrop_path: string
     genre_ids: Array<number>
@@ -29,28 +29,4 @@ class NowPlayingMoviesResults {
     }
 }
 
-class NowPlayingMovieDates {
-    maximum: Date
-    minimum: Date
-    constructor(maximum= new Date(), minimum= new Date()) {
-        this.maximum = maximum;
-        this.minimum = minimum;
-    }
-}
-
-class NowPlayingMoviesModel {
-    dates: NowPlayingMovieDates
-    page: number
-    results:Array<NowPlayingMoviesResults>
-    total_pages:number
-    total_results:number
-    constructor(dates=new NowPlayingMovieDates(), page=0, results=[], total_pages=0, total_results=0) {
-        this.dates = dates;
-        this.page = page;
-        this.results = results;
-        this.total_pages = total_pages;
-        this.total_results = total_results;
-    }
-}
-
-export default NowPlayingMoviesModel;
+export default MovieDetailModel;

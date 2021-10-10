@@ -1,18 +1,13 @@
 import React from 'react';
 import {View, Text, StyleSheet, Dimensions, Platform} from 'react-native';
 import {ParallaxImage} from 'react-native-snap-carousel';
+import CarouselModel from '../models/CarouselModel';
 
 const {width: screenWidth} = Dimensions.get('window');
 
-const defaultItem = {
-  title:'',
-  subtitle:'',
-  illustration:'',
-};
-
 const defaultIndex = 1;
 
-const CarouselParallaxItem = ({item = defaultItem, index = defaultIndex}, parallaxProps={}) => {
+const CarouselParallaxItem = ({item = new CarouselModel(), index = defaultIndex}, parallaxProps={}) => {
   return (
     <View style={styles.item} key={index}>
       <ParallaxImage
@@ -28,8 +23,8 @@ const CarouselParallaxItem = ({item = defaultItem, index = defaultIndex}, parall
 
 const styles = StyleSheet.create({
   item: {
-    width: screenWidth - 60,
-    height: screenWidth - 210,
+    width: screenWidth - 20,
+    height: screenWidth - 120,
   },
   title: {},
   imageContainer: {
@@ -40,7 +35,7 @@ const styles = StyleSheet.create({
   },
   image: {
     ...StyleSheet.absoluteFillObject,
-    resizeMode: 'cover',
+    resizeMode: 'center',
   },
 });
 

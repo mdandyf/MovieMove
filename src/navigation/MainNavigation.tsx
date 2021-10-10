@@ -9,6 +9,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Color from '../constants/color';
 import UserScreen from '../pages/UserScreen';
+import DownloadScreen from '../pages/DownloadScreen';
 import TVShowScreen from '../pages/TVShowScreen';
 import MovieMoveScreen from '../pages/MovieMoveScreen';
 import MovieScreen from '../pages/MovieScreen';
@@ -61,8 +62,8 @@ const MainNavigation = () => {
               iconName = focused ? 'ios-tv' : 'ios-tv-outline';
                // You can return any component that you like here!
               return <Ionicons name={iconName} size={size} color={color} />;
-            } else if (route.name === 'User') {
-              iconName = focused ? 'md-person' : 'md-person-outline';
+            } else if (route.name === 'Download') {
+              iconName = focused ? 'ios-download' : 'ios-download-outline';
                // You can return any component that you like here!
               return <Ionicons name={iconName} size={size} color={color} />;
             }
@@ -77,7 +78,7 @@ const MainNavigation = () => {
         <Tab.Screen name="Movie" component={MovieScreen} options={({ route }) => ({headerTitle: 'MovieMove', headerRight: (HeaderRightIcon), headerLeft: (HeaderLeftIcon)})} />
         <Tab.Screen name="MovieMove" component={MovieMoveScreen} options={({ route }) => ({headerTitle: 'MovieMove', headerRight: (HeaderRightIcon), headerLeft: (HeaderLeftIcon)})} />
         <Tab.Screen name="TV Show" component={TVShowScreen} options={({ route }) => ({headerTitle: 'MovieMove', headerRight: (HeaderRightIcon), headerLeft: (HeaderLeftIcon)})} />
-        <Tab.Screen name="User" component={UserScreen} options={({ route }) => ({headerTitle: 'MovieMove', headerRight: (HeaderRightIcon), headerLeft: (HeaderLeftIcon)})} />
+        <Tab.Screen name="Download" component={DownloadScreen} options={({ route }) => ({headerTitle: 'MovieMove', headerRight: (HeaderRightIcon), headerLeft: (HeaderLeftIcon)})} />
       </Tab.Navigator>
     </NavigationContainer>
   );

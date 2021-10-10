@@ -1,42 +1,29 @@
 
-import {
-    GET_TOP_RATED_MOVIES,
-    GET_POPULAR_MOVIES,
-    GET_NOW_PLAYING_MOVIES,
-    GET_UPCOMING_MOVIES,
-} from '../actions/movies';
-
-import TopRatedMovies from '../../models/TopRatedMoviesModel';
-import PopularMovies from '../../models/PopularMoviesModel';
-import NowPlayingMovies from '../../models/NowPlayingMoviesModel';
-import UpComingMovies from '../../models/UpcomingMovieModel';
+import MoviesModel from '../../models/MoviesModel';
+import { Action } from '../actions/index';
+import { ActionType } from '../actiontype/index';
 
 const initialState = {
-    isLoading: true,
-    topPickMovies: [],
-    popularMovies: [],
-    nowPlayingMovies: [],
-    upcomingMovies: [],
+    isLoadingTopPickMovies: true,
+    topPickMovies: {},
+    isLoadingPopularMovies: true,
+    popularMovies: {},
+    isLoadingNowPlayingMovies: true,
+    nowPlayingMovies: {},
+    isLoadingUpcomingMovies: true,
+    upcomingMovies: {}
 }
 
-const actionInitialState = {
-    type: "",
-    dataTopRated: new TopRatedMovies(),
-    dataPopular: new PopularMovies(),
-    dataNowPlaying: new NowPlayingMovies(),
-    dataUpcoming: new UpComingMovies()
-}
-
-const movieReducer = (state = initialState, action=actionInitialState) => {
+const movieReducer = (state: any = initialState, action: Action) => {
     switch (action.type) {
-        case GET_TOP_RATED_MOVIES:
-            return {...state, isLoading: false, topPickMovies: action.dataTopRated.results}
-        case GET_POPULAR_MOVIES:
-            return {...state, isLoading: false, popularMovies: action.dataPopular.results}
-        case GET_NOW_PLAYING_MOVIES:
-            return {...state, isLoading: false, nowPlayingMovies: action.dataNowPlaying.results}
-        case GET_UPCOMING_MOVIES:
-            return {...state, isLoading: false, upcomingMovies: action.dataUpcoming.results}
+        case ActionType.GET_TOP_RATED_MOVIES:
+            return {...state, isLoadingTopPickMovies: false, topPickMovies: action.payload}
+        case ActionType.GET_POPULAR_MOVIES:
+            return {...state, isLoadingPopularMovies: false, popularMovies: action.payload}
+        case ActionType.GET_NOW_PLAYING_MOVIES:
+            return {...state, isLoadingNowPlayingMovies: false, nowPlayingMovies: action.payload}
+        case ActionType.GET_UPCOMING_MOVIES:
+            return {...state, isLoadingUpcomingMovies: false, upcomingMovies: action.payload}
         default:
             return state;
     }
