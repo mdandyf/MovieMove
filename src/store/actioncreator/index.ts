@@ -136,3 +136,23 @@ export const getOnTheAirTvShows = () => {
         }
     };
 }
+
+export const getPopularPeople = () => {
+    return async (dispatch:Dispatch) => {
+        try {
+            const response = await fetch(Constant.API_PEOPLE + "/popular?" + "api_key=" + Constant.API_KEYS + "&language=" + Constant.LANGUAGE + "&page" + Constant.PAGE );
+
+            if (!response.ok) {
+                throw new Error('Something went wrong!');
+            }
+
+            const resData = await response.json();
+            
+
+            dispatch({type: ActionType.GET_POPULAR_PEOPLE, payload:resData});
+        } catch(err) {
+            throw err
+        }
+    };
+}
+

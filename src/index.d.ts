@@ -9,7 +9,4 @@ declare module 'react-native-vector-icons/Feather';
 declare module 'react-native-vector-icons/Ionicons';
 declare module 'react-native-vector-icons/Octicons';
 declare module 'react-native-snap-carousel';
-declare module 'lodash';
-declare module 'axios';
-declare module '@env';
 declare module '@types/react-redux';

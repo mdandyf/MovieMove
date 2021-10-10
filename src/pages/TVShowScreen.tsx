@@ -4,7 +4,6 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import {State} from '../store';
 import CarouselParallaxSmall from '../components/CarouselParallaxSmall';
-import dummyData from '../constants/dummydata';
 
 import {
   getPopularTvShows,

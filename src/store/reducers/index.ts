@@ -1,10 +1,13 @@
 import { combineReducers } from 'redux';
-import movieReducer from '../reducers/movies';
-import tvshowReducer from '../reducers/tvshows';
+
+import movieReducer from './movies';
+import tvshowReducer from './tvshows';
+import peopleReducer from './people';
 
 const reducer = combineReducers({
     movies: movieReducer,
     tvshows: tvshowReducer,
+    people: peopleReducer,
 });
 
 export default reducer;

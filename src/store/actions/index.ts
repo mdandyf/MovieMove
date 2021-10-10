@@ -1,5 +1,6 @@
 import MoviesModel from '../../models/MoviesModel';
 import TVShowsModel from '../../models/TvShowsModel';
+import PeopleModel from '../../models/PeopleModel';
 import { ActionType } from '../actiontype/index';
 
 interface TopRatedAction {
@@ -37,4 +38,9 @@ interface OTATVAction {
     payload: TVShowsModel
 }
 
-export type Action = TopRatedAction | PopularAction | NowPlayingAction | UpcomingAction | TopRatedTVAction | PopularTVAction | OTATVAction
+interface PopularPeopleAction {
+    type: ActionType.GET_POPULAR_PEOPLE,
+    payload: PeopleModel
+}
+
+export type Action = TopRatedAction | PopularAction | NowPlayingAction | UpcomingAction | TopRatedTVAction | PopularTVAction | OTATVAction | PopularPeopleAction
