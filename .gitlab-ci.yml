@@ -9,6 +9,11 @@
 
 image: openjdk:8-jdk
 
+stages:
+  - testassemble
+  - testdebug
+  - build
+
 variables:
 
   # ANDROID_COMPILE_SDK is the version of Android you're compiling with.
@@ -68,6 +73,7 @@ lintDebug:
 
 # Make Project
 assembleDebug:
+  stage: testassemble
   interruptible: true
   stage: build
   script:
@@ -78,14 +84,14 @@ assembleDebug:
 
 # Run all tests, if any fails, interrupt the pipeline(fail it)
 debugTests:
+  stage: testdebug
   interruptible: true
   stage: test
   script:
     - ./gradlew -Pci --console=plain :app:testDebug
 
-stages:
-  - build
----
+
+
 build:android:package:
   stage: build
   image: reactnativecommunity/react-native-android
