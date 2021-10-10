@@ -7,12 +7,8 @@ import CarouselParallaxSmall from '../components/CarouselParallaxSmall';
 import * as moviesActions from '../store/actions/movies';
 import * as tvShowActions from '../store/actions/tvshows';
 
-
 const HomeScreen = () => {
   const [screenHeight, setScreenHeight] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isRefreshing, setIsRefreshing] = useState(false);
-  const [error, setError] = useState();
   
   const data = [
     {
@@ -41,7 +37,7 @@ const HomeScreen = () => {
       illustration: 'https://i.imgur.com/2nCt3Sbl.jpg',
     },
   ];
-  
+
   const dispatch = useDispatch();
 
   const loadTopRatedMovies = useCallback(async () => {

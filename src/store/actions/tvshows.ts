@@ -12,17 +12,13 @@ export const getTopRatedTvShows = () => {
             }
 
             const resData = await response.json();
+            console.log(resData)
 
             dispatch({type: GET_TOP_RATED_TV_SHOWS, data:resData});
         } catch(err) {
             throw err
         }
     };
-}
-
-
-export const getTopRatedTVShows = () => {
-    return {type: GET_TOP_RATED_TV_SHOWS};
 }
 
 export const GET_POPULAR_TV_SHOWS = 'GET_POPULAR_TV_SHOWS';
@@ -37,6 +33,7 @@ export const getPopularTvShows = () => {
             }
 
             const resData = await response.json();
+            console.log(resData)
 
             dispatch({type: GET_POPULAR_TV_SHOWS, data:resData});
         } catch(err) {

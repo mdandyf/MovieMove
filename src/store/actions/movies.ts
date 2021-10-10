@@ -12,6 +12,7 @@ export const getTopRatedMovies = () => {
             }
 
             const resData = await response.json();
+            console.log(resData)
 
             dispatch({type: GET_TOP_RATED_MOVIES, data:resData});
         } catch(err) {
@@ -32,6 +33,7 @@ export const getPopularMovies = () => {
             }
 
             const resData = await response.json();
+            console.log(resData)
 
             dispatch({type: GET_POPULAR_MOVIES, data:resData});
         } catch(err) {
@@ -52,6 +54,7 @@ export const getNowPlayingMovies = () => {
             }
 
             const resData = await response.json();
+            console.log(resData)
 
             dispatch({type: GET_NOW_PLAYING_MOVIES, data:resData});
         } catch(err) {
@@ -72,6 +75,7 @@ export const getUpcomingMovies = () => {
             }
 
             const resData = await response.json();
+            console.log(resData)
 
             dispatch({type: GET_UPCOMING_MOVIES, data:resData});
         } catch(err) {
