@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { View } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -22,13 +23,26 @@ const MainNavigation = () => {
     SplashScreen.hide()
   }, [])
 
+  const HeaderLeftIcon = () => {
+    return(
+      <Image source={require('../assets/png/icon_small.png')} style={{width: 27, height: 27, marginLeft: 20}}/>
+    )
+  }
+
+  const HeaderRightIcon = () => {
+    return(
+      <View style={{marginRight: 20}}>
+        <Ionicons name={'search'} size={27} color={Color.black}/>
+      </View>
+    )
+  }
+
   return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
-
             if (route.name === 'Home') {
               iconName = focused
                 ? 'home'
@@ -56,14 +70,14 @@ const MainNavigation = () => {
            
           },
           tabBarActiveTintColor: Color.primary,
-          tabBarInactiveTintColor: 'gray',
+          tabBarInactiveTintColor: Color.inactive,
         })}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Movie" component={MovieScreen} />
-        <Tab.Screen name="MovieMove" component={MovieMoveScreen} />
-        <Tab.Screen name="TV Show" component={TVShowScreen} />
-        <Tab.Screen name="User" component={UserScreen} />
+        <Tab.Screen name="Home" component={HomeScreen} options={({ route }) => ({headerTitle: 'MovieMove', headerRight: (HeaderRightIcon), headerLeft: (HeaderLeftIcon)})} />
+        <Tab.Screen name="Movie" component={MovieScreen} options={({ route }) => ({headerTitle: 'MovieMove', headerRight: (HeaderRightIcon), headerLeft: (HeaderLeftIcon)})} />
+        <Tab.Screen name="MovieMove" component={MovieMoveScreen} options={({ route }) => ({headerTitle: 'MovieMove', headerRight: (HeaderRightIcon), headerLeft: (HeaderLeftIcon)})} />
+        <Tab.Screen name="TV Show" component={TVShowScreen} options={({ route }) => ({headerTitle: 'MovieMove', headerRight: (HeaderRightIcon), headerLeft: (HeaderLeftIcon)})} />
+        <Tab.Screen name="User" component={UserScreen} options={({ route }) => ({headerTitle: 'MovieMove', headerRight: (HeaderRightIcon), headerLeft: (HeaderLeftIcon)})} />
       </Tab.Navigator>
     </NavigationContainer>
   );
