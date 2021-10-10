@@ -7,7 +7,10 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "android-package": "cd android && ./gradlew assembleRelease",
+    "bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.bundle --sourcemap-output android/app/src/main/assets/index.map --assets-dest android/app/src/main/res",
+    "generate-gradle-properties": "sh generate-gradle-properties.sh > android/gradle.properties"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.0.7",

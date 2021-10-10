@@ -82,3 +82,20 @@ debugTests:
   stage: test
   script:
     - ./gradlew -Pci --console=plain :app:testDebug
+
+stages:
+  - build
+---
+build:android:package:
+  stage: build
+  image: reactnativecommunity/react-native-android
+  script:
+    - echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p
+    - yarn install
+    - base64 -d $ANDROID_KEYSTORE > android/app/my-key.keystore
+    - yarn generate-gradle-properties
+    - yarn bundle
+    - yarn android-package --no-daemon
+  artifacts:
+    paths:
+      - ./android/app/build/outputs/
