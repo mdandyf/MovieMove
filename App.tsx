@@ -9,28 +9,21 @@
  */
 
 import React from 'react';
-import { createStore, combineReducers } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 import MainNavigation from './src/navigation/MainNavigation';
-import movieReducer from './src/store/reducers/movies';
-import tvshowReducer from './src/store/reducers/tvshows';
+import reducer from './src/store/reducers/index'
 
-const App = () => {
-
-  const rootReducer = combineReducers({
-    // if there are many reducers, populate them into an object
-    movieReducerState: movieReducer,
-    tvshowReducerState: tvshowReducer,
-  });
+export default function App() {
   
-  const rootStore = createStore(rootReducer);
+  const store = createStore(reducer, {}, applyMiddleware(thunk));
 
   return (
-    <Provider store={rootStore}>
+    <Provider store={store}>
       <MainNavigation />
     </Provider>
   );
 }
 
-export default App;

@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
+import {Text, Image, View} from 'react-native';
 
 const MovieMoveScreen = () => {
-  return(
+  return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>MovieMove!</Text>
+        <Image source={require('../assets/png/icon_small.png')} style={{opacity: 0.5}}/>
+        <Text style={{marginTop: 10}}>No Data</Text>
     </View>
-  )
+  );
 };
 
 export default MovieMoveScreen;
