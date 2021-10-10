@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Dimensions, Platform} from 'react-native';
+import {TouchableOpacity, StyleSheet, Dimensions, Platform} from 'react-native';
 import {ParallaxImage} from 'react-native-snap-carousel';
 import CarouselModel from '../models/CarouselModel';
 
@@ -9,7 +9,7 @@ const defaultIndex = 1;
 
 const CarouselParallaxSmallItem = ({item = new CarouselModel(), index = defaultIndex}, parallaxProps={}) => {
   return (
-    <View style={styles.item} key={index}>
+    <TouchableOpacity style={styles.item} key={index}>
       <ParallaxImage
         source={{uri: item.illustration}}
         containerStyle={styles.imageContainer}
@@ -17,7 +17,7 @@ const CarouselParallaxSmallItem = ({item = new CarouselModel(), index = defaultI
         parallaxFactor={0.4}
         {...parallaxProps}
       />
-    </View>
+    </TouchableOpacity>
   );
 };
 
