@@ -13,20 +13,21 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 import MainNavigation from './src/navigation/MainNavigation';
-import appReducer from './src/store/reducers/main-reducer';
+import movieReducer from './src/store/reducers/movies';
+import tvshowReducer from './src/store/reducers/tvshows';
 
 const App = () => {
 
   const rootReducer = combineReducers({
     // if there are many reducers, populate them into an object
-    appReducerState: appReducer
+    movieReducerState: movieReducer,
+    tvshowReducerState: tvshowReducer,
   });
   
   const rootStore = createStore(rootReducer);
 
   return (
     <Provider store={rootStore}>
-      
       <MainNavigation />
     </Provider>
   );
