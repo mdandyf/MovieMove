@@ -1,0 +1,41 @@
+trigger:
+- dev
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  KEYSTORE_PASS: $(keystorePassword)
+  KEY_ALIAS: $(keyAlias)
+  KEY_PASS: $(keyPassword)
+
+name: $(date:yyyy).$(Month)$(rev:.r)
+
+steps:
+
+- script: npm install
+
+- task: Gradle@2
+  inputs:
+    gradleWrapperFile: 'android/gradlew'
+    workingDirectory: 'android/'
+    options: '-PversionName=$(Build.BuildNumber) -PversionCode=$(Build.BuildId)'
+    tasks: 'assembleRelease'
+    publishJUnitResults: false
+    javaHomeOption: 'JDKVersion'
+    gradleOptions: '-Xmx3072m'
+
+- task: AndroidSigning@3
+  inputs:
+    apkFiles: '**/*.apk'
+    apksignerKeystoreFile: 'my-upload-key.keystore'
+    apksignerKeystorePassword: $(KEYSTORE_PASS)
+    apksignerKeystoreAlias: $(KEY_ALIAS)
+    apksignerKeyPassword: $(KEY_PASS)
+    zipalign: false
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'android/app/build/outputs/apk/release'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
