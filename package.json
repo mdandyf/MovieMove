@@ -10,7 +10,13 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "android-package": "cd android && ./gradlew assembleRelease",
     "bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.bundle --sourcemap-output android/app/src/main/assets/index.map --assets-dest android/app/src/main/res",
-    "generate-gradle-properties": "sh generate-gradle-properties.sh > android/gradle.properties"
+    "generate-gradle-properties": "sh generate-gradle-properties.sh > android/gradle.properties",
+    "ios-package": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios",
+    "ios-depedency": "cd ./ios && pod install & cd ..",
+    "ios-depedency-arc1": "cd node_modules/react-native/scripts && ./ios-install-third-party.sh && cd ../../../",
+    "ios-depedency-arc2": "cd node_modules/react-native/scripts/third-party/glog-0.3.5/ && ../../../scripts/ios-configure-glog.sh && cd ../../../../",
+    "depedency": "npm run clean && npm install && npm run ios-depedency && npm run ios-depedency-arc1 && npm run ios-depedency-arc2"
+
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.0.7",
