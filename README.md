@@ -2,8 +2,8 @@
 
 ## Setup
 
-- clone the repository `git@gitlab.com:moviecat/moviecatalogapp.git`
-- open the clonned folder `cd movie-catalog`
+- clone the repository  using SSH at `git@gitlab.com:moviecat/moviecatalogapp.git` or using https at `https://gitlab.com/moviecat/moviecatalogapp.git`
+- open the clonned folder `cd moviecatalogapp`
 - install the dependencies `yarn install`
 
 ## Run to Android Device or Emulator
