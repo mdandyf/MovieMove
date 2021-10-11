@@ -1,5 +1,7 @@
 # MovieMove App
 
+MovieMove is a Movie Catalog Application with some addition of the people behind the movie.
+
 ## Setup
 
 - clone the repository  using SSH at `git@gitlab.com:moviecat/moviecatalogapp.git` or using https at `https://gitlab.com/moviecat/moviecatalogapp.git`
